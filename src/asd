@@ -1,0 +1,90 @@
+import React from "react"; 
+import { connect } from "react-redux"
+
+
+function Menu ({inicio}) /* PASO 1
+                             le estoy indicando q voy a tomar los datos que haya en el objeto "inicio"
+                            q se encuentra en la store */  {
+    return (
+        inicio.map(i =>( /* PASO 3
+                            le estoy diciendo que puede realizar el mapeo de los datos en el objeto
+                            inicio */
+        <h1>hola {i.nombre}</h1>
+    )))
+}
+
+
+const mapStateToProps = state => ({
+    inicio: state.inicio /*         PASO 2
+                                le estoy diciendo q tome desde la store los datos del objeto inicio
+                            para realizar un mapeo */
+  })
+
+export default connect(mapStateToProps , {}) (Menu)
+
+
+
+
+
+
+
+
+ Puntuacion_Uno(curso) {
+    dispatch ({
+      type: "SUMAR_UNO",
+      curso
+    })
+  },
+
+  Puntuacion_Dos(curso) {
+    dispatch ({
+      type: "SUMAR_DOS",
+     
+      curso
+    })
+  },
+
+  Puntuacion_Tres(curso) {
+    dispatch ({
+      type: "SUMAR_TRES",
+      
+      curso
+    })
+  },
+
+  Puntuacion_Cuatro(curso) {
+    dispatch ({
+      type: "SUMAR_CUATRO",
+      
+      curso
+    })
+  },
+
+  Puntuacion_Cinco(curso) {
+    dispatch ({
+      type: "SUMAR_CINCO",
+      
+      curso
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+  const VALOR = (state=initialState, action) => {
+        console.log(action);
+
+
+
+        const {curso} = action;
+        curso.calificacion = "1";
+        const cursos = state.cursos.map(c => c.id === curso.id ? curso : c);
+        return {...state, cursos};
+        
+        }
